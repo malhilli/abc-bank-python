@@ -1,6 +1,6 @@
 from nose.tools import assert_equals, nottest
 
-from account import Account, CHECKING, SAVINGS
+from account import Account, CHECKING, SAVINGS, MAXI_SAVINGS
 from customer import Customer
 
 
