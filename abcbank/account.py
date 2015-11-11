@@ -1,4 +1,6 @@
 from abcbank.transaction import Transaction
+from abcbank.customer import Customer
+
 
 CHECKING = 0
 SAVINGS = 1
@@ -21,6 +23,17 @@ class Account:
             raise ValueError("amount must be greater than zero")
         else:
             self.transactions.append(Transaction(-amount))
+
+    def transfer(self,initial_account,final_account,amount):
+        if (amount <= 0):
+            raise ValueError("amount must be greater than zero")
+        elif Customer.numAccs()<=1:
+            raise ValueError("You must have at least 2 accounts")
+        else:
+            self.accountType=initial_account
+            self.withdraw(amount)
+            self.accountType=final_account
+            self.deposit(amount)
 
     def interestEarned(self):
         amount = self.sumTransactions()
